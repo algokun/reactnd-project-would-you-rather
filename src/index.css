@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
+
+:root {
+  --primaryLight: #e4f9ff;
+  --primary: #12cad6;
+  --secondaryLight: #f1e4ff;
+  --secondary: #aa6eeb;
+  --text-primary: #000000;
+  --text-secondary: #888888;
+  --font: "Lexend Deca", sans-serif;
+}
+
+body html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--text-secondary);
+  background-color: var(--primaryLight);
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.heading {
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  font-weight: normal;
+}
+
+.select-user-avatar {
+  width: 8rem;
+  height: 8rem;
+}
+
+.select-user-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 1rem;
+}
+
+.select-user-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.active-user-avatar {
+  border: 0.3rem solid var(--primary);
+  border-radius: 8rem;
+}
+
+.select-user-avatar-name {
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.primary-cta {
+  background-color: var(--primary);
+  border: none;
+  padding: 1rem;
+  width: 20rem;
+  border-radius: 5px;
+  font-family: var(--font);
+  text-transform: capitalize;
+  font-size: 1rem;
+}
