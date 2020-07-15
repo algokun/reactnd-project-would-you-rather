@@ -5,6 +5,7 @@ import { signOutUser } from "../redux/auth/actions";
 import Leaderboard from "./Leaderboard";
 import Questions from "./Questions";
 import NewQuestion from "./NewQuestion";
+import QuestionPage from "./QuestionPage";
 
 class Home extends Component {
   signOut = () => {
@@ -52,6 +53,7 @@ class Home extends Component {
             <Route exact path="/" component={Questions} />
             <Route exact path="/leaderboard" component={Leaderboard} />
             <Route exact path="/new" component={NewQuestion} />
+            <Route path="/questions/:question_id" component={QuestionPage} />
           </div>
         </div>
       </BrowserRouter>

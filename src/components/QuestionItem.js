@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 class QuestionItem extends Component {
   render() {
     const { name, avatar } = this.props.author;
-    const { optionOne, optionTwo } = this.props.question;
+    const { id, optionOne, optionTwo } = this.props.question;
     const { isAnswered } = this.props;
     return (
       <div className="question-item">
@@ -31,7 +31,7 @@ class QuestionItem extends Component {
             >
               {optionTwo.text}
             </p>
-            <Link className="poll-btn" to="/">
+            <Link className="poll-btn" to={`questions/${id}`}>
               {!isAnswered ? "Answer" : "View Results"}
             </Link>
           </div>

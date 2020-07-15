@@ -35,10 +35,10 @@ const addAnswerToUser = (qid, author, option) => {
 export function handleSaveQuestionAnswer(authUser, qid, option) {
   return (dispatch) => {
     dispatch(showLoading());
-    dispatch(addAnswerToUser(authUser, qid, option));
-    dispatch(addAnswerToQuestion(authUser, qid, option));
+    dispatch(addAnswerToUser(qid, authUser, option));
+    dispatch(addAnswerToQuestion(qid, authUser, option));
 
-    return _saveQuestionAnswer(authUser, qid, option)
+    return _saveQuestionAnswer({ authedUser: authUser, qid, answer: option })
       .then(() => {
         dispatch(hideLoading());
         alert("Task Completed Successfully");
