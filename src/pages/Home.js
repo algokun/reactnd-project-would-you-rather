@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Route, BrowserRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../redux/users/actions/actions";
+import Leaderboard from "./Leaderboard";
 
 class Home extends Component {
   signOut = () => {
@@ -49,9 +50,7 @@ class Home extends Component {
             <Route exact path="/">
               <h1> Home</h1>
             </Route>
-            <Route exact path="/leaderboard">
-              <h1>leaderboard</h1>
-            </Route>
+            <Route exact path="/leaderboard" component={Leaderboard} />
             <Route exact path="/new">
               <h1>new</h1>
             </Route>
@@ -65,6 +64,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return {
     authedUser: state.users.authedUser,
+    users: state.users.users,
   };
 };
 
