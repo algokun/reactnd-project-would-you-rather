@@ -1,21 +1,12 @@
 import { LOG_IN, SIGN_OUT } from "./actions";
 
-const initialState = {
-  authedUser: null,
-};
-
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = null, action) => {
   switch (action.type) {
     case LOG_IN:
-      return {
-        ...state,
-        authedUser: action.authedUser,
-      };
+      const { authedUser } = action;
+      return authedUser;
     case SIGN_OUT:
-      return {
-        ...state,
-        authedUser: null,
-      };
+      return null;
 
     default:
       return state;

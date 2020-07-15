@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 class QuestionItem extends Component {
   render() {
     const { name, avatar } = this.props.author;
-    const { id, optionOne, optionTwo } = this.props.question;
-    const { isAnswered } = this.props;
+    const { optionOne, optionTwo } = this.props.question;
     return (
       <div className="question-item">
         <div className="question-item-author">{name} asks</div>
@@ -19,7 +18,9 @@ class QuestionItem extends Component {
             <span className="title">Would you rather</span>
             <p>{optionOne.text}</p>
             <p>{optionTwo.text}</p>
-            <Link className="poll-btn">Answer</Link>
+            <Link className="poll-btn" to="/">
+              Answer
+            </Link>
           </div>
         </div>
       </div>
@@ -28,9 +29,9 @@ class QuestionItem extends Component {
 }
 
 const mapStateToProps = ({ users, questions }, { id }) => {
-  const questionItem = questions.questions[id];
+  const questionItem = questions[id];
   let { author } = questionItem;
-  author = users.users[author];
+  author = users[author];
 
   return {
     question: questionItem,

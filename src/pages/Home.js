@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { signOutUser } from "../redux/auth/actions";
 import Leaderboard from "./Leaderboard";
 import Questions from "./Questions";
+import NewQuestion from "./NewQuestion";
 
 class Home extends Component {
   signOut = () => {
@@ -50,9 +51,7 @@ class Home extends Component {
           <div className="main-home-container">
             <Route exact path="/" component={Questions} />
             <Route exact path="/leaderboard" component={Leaderboard} />
-            <Route exact path="/new">
-              <h1>new</h1>
-            </Route>
+            <Route exact path="/new" component={NewQuestion} />
           </div>
         </div>
       </BrowserRouter>
@@ -62,7 +61,7 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    authedUser: state.users.authedUser,
+    authedUser: state.auth,
     users: state.users.users,
   };
 };

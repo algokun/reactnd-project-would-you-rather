@@ -66,7 +66,7 @@ class SelectUser extends Component {
 
 const mapStateToProps = ({ loadingBar, users }) => {
   return {
-    users: users.users,
+    users,
     loading: loadingBar.default,
   };
 };

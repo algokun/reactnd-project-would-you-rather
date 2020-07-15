@@ -15,7 +15,7 @@ class App extends Component {
         <LoadingBar />
         <div>
           {/* If there is user - redirect to home else be here */}
-          {this.props.authedUser === null ? <SelectUser /> : <Home />}
+          {this.props.auth === null ? <SelectUser /> : <Home />}
         </div>
       </Fragment>
     );
@@ -24,7 +24,7 @@ class App extends Component {
 
 const mapStateToProps = ({ auth }) => {
   return {
-    authedUser: auth.authedUser,
+    auth,
   };
 };
 

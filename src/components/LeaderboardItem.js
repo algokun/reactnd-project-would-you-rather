@@ -29,7 +29,7 @@ class LeaderboardItem extends Component {
 
 const mapStateToProps = ({ users }, { id }) => {
   return {
-    user: users.users[id],
+    user: users[id],
   };
 };
 

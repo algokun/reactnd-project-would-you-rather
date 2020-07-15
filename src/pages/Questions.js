@@ -72,14 +72,12 @@ class Questions extends Component {
 }
 
 const mapStateToProps = ({ auth, loadingBar, questions, users }) => {
-  const { authedUser } = auth;
-  const totalQuestions = Object.keys(questions.questions).sort(
-    (a, b) =>
-      questions.questions[b].timestamp - questions.questions[a].timestamp
+  const totalQuestions = Object.keys(questions).sort(
+    (a, b) => questions[b].timestamp - questions[a].timestamp
   );
-  const answeredQuestions = Object.keys(users.users[authedUser].answers);
+  const answeredQuestions = Object.keys(users[auth].answers);
   return {
-    authedUser: users.users[authedUser],
+    authedUser: users[auth],
     loadingBar: loadingBar.default,
     answeredQuestions,
     unansweredQuestions: totalQuestions.filter(
