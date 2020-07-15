@@ -1,5 +1,6 @@
 import { GET_USERS, LOG_IN, SIGN_OUT } from "./action_constants";
 import { _getUsers } from "../../../utils/api";
+import { showLoading, hideLoading } from "react-redux-loading";
 
 const fetchUsers = (users) => {
   return {
@@ -23,9 +24,10 @@ export const signOut = () => {
 
 export const getUsers = () => {
   return function (dispatch) {
-    //TODO: Add loading ui here
+    dispatch(showLoading());
     _getUsers().then((response) => {
       dispatch(fetchUsers(response));
+      dispatch(hideLoading());
     });
   };
 };
