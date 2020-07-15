@@ -39,7 +39,7 @@ class Home extends Component {
               </NavLink>
               <NavLink
                 activeClassName="nav-link-active"
-                to="/new"
+                to="/add"
                 className="nav-link"
               >
                 New Question
@@ -52,7 +52,7 @@ class Home extends Component {
           <div className="main-home-container">
             <Route exact path="/" component={Questions} />
             <Route exact path="/leaderboard" component={Leaderboard} />
-            <Route exact path="/new" component={NewQuestion} />
+            <Route exact path="/add" component={NewQuestion} />
             <Route path="/questions/:question_id" component={QuestionPage} />
           </div>
         </div>
