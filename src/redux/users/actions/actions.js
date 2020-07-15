@@ -6,6 +6,7 @@ import {
 
 import { addAnswerToQuestion } from "../../questions/actions";
 import { _saveQuestionAnswer } from "../../../utils/api";
+import { showLoading, hideLoading } from "react-redux-loading";
 
 export const fetchUsers = (users) => {
   return {
@@ -33,11 +34,17 @@ const addAnswerToUser = (qid, author, option) => {
 
 export function handleSaveQuestionAnswer(authUser, qid, option) {
   return (dispatch) => {
+    dispatch(showLoading());
     dispatch(addAnswerToUser(authUser, qid, option));
     dispatch(addAnswerToQuestion(authUser, qid, option));
 
-    return _saveQuestionAnswer(authUser, qid, option).catch((e) => {
-      alert("Something went wrong");
-    });
+    return _saveQuestionAnswer(authUser, qid, option)
+      .then(() => {
+        dispatch(hideLoading());
+        alert("Task Completed Successfully");
+      })
+      .catch((e) => {
+        alert("Something went wrong");
+      });
   };
 }

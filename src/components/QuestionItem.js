@@ -6,6 +6,7 @@ class QuestionItem extends Component {
   render() {
     const { name, avatar } = this.props.author;
     const { optionOne, optionTwo } = this.props.question;
+    const { isAnswered } = this.props;
     return (
       <div className="question-item">
         <div className="question-item-author">{name} asks</div>
@@ -16,10 +17,22 @@ class QuestionItem extends Component {
           <span className="vertical-hr" />
           <div>
             <span className="title">Would you rather</span>
-            <p>{optionOne.text}</p>
-            <p>{optionTwo.text}</p>
+            <p
+              style={{
+                fontSize: 14,
+              }}
+            >
+              {optionOne.text}
+            </p>
+            <p
+              style={{
+                fontSize: 14,
+              }}
+            >
+              {optionTwo.text}
+            </p>
             <Link className="poll-btn" to="/">
-              Answer
+              {!isAnswered ? "Answer" : "View Results"}
             </Link>
           </div>
         </div>

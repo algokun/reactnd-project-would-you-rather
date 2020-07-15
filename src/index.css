@@ -212,7 +212,26 @@ body {
   margin-right: 1rem;
 }
 
-.poll-btn{
- text-decoration: none; 
- color: var(--secondary);
+.poll-btn {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+.add-new-question {
+  width: 50%;
+}
+
+.input-field {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 0.3rem;
+  outline: none;
+  border: none;
+  background-color: var(--surface);
+  font-family: var(--font);
+}
+
+form{
+  display: flex;
+  flex-direction: column;
 }

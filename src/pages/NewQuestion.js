@@ -3,23 +3,59 @@ import { connect } from "react-redux";
 import { handleSaveQuestion } from "../redux/questions/actions";
 
 class NewQuestion extends Component {
-  addQuestion = () => {
+  state = {
+    optionOne: "",
+    optionTwo: "",
+  };
+
+  addQuestion = (e) => {
+    e.preventDefault();
     const { auth } = this.props;
 
-    console.log(auth);
-
     this.props.dispatch(
-      handleSaveQuestion("Be billgates", "Be Jeff bezos", auth)
+      handleSaveQuestion(this.state.optionOne, this.state.optionTwo, auth)
     );
+  };
+
+  onOptionOneChange = (e) => {
+    const optionOne = e.target.value;
+    this.setState({
+      optionOne,
+    });
+  };
+
+  onOptionTwoChange = (e) => {
+    const optionTwo = e.target.value;
+    this.setState({
+      optionTwo,
+    });
   };
 
   render() {
     return (
-      <div>
+      <div className="add-new-question">
         <h1>Add a new Question</h1>
-        <button className="primary-cta" onClick={this.addQuestion}>
-          Add
-        </button>
+        <form onSubmit={this.addQuestion}>
+          <input
+            type="text"
+            className="input-field"
+            value={this.state.optionOne}
+            onChange={this.onOptionOneChange}
+            placeholder="Enter Option One"
+            required
+          />
+          <input
+            type="text"
+            className="input-field"
+            value={this.state.optionTwo}
+            onChange={this.onOptionTwoChange}
+            placeholder="Enter Option Two"
+            required
+          />
+          <button type="submit" className="primary-cta">
+            Add Question
+          </button>
+        </form>
         <div></div>
       </div>
     );
