@@ -8,12 +8,20 @@ class LeaderboardItem extends Component {
     const createdQuestions = questions.length;
     const totalPoints = answeredQuestions + createdQuestions;
     return (
-      <div>
+      <div className="leaderboard-item">
         <img src={avatar} className="select-user-avatar" alt={id} />
-        <h3>{name}</h3>
-        <p>Answered Questions : {answeredQuestions}</p>
-        <p>Created Questions : {createdQuestions}</p>
-        <p>Total Points : {totalPoints}</p>
+        <div>
+          <span className="title">{name}</span>
+          <p>Answered Questions : {answeredQuestions}</p>
+          <hr />
+          <p>Created Questions : {createdQuestions}</p>
+        </div>
+        <div className="score-board">
+          <p>
+            Score <br />
+            <br /> {totalPoints}
+          </p>
+        </div>
       </div>
     );
   }
