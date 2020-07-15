@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getQuestions } from "../redux/questions/actions/actions";
 import QuestionItem from "../components/QuestionItem";
 
 class Questions extends Component {
-  componentDidMount() {
-    this.props.dispatch(getQuestions());
-  }
-
   state = {
     active: "Answered",
     items: [
@@ -76,8 +71,8 @@ class Questions extends Component {
   }
 }
 
-const mapStateToProps = ({ loadingBar, questions, users }) => {
-  const { authedUser } = users;
+const mapStateToProps = ({ auth, loadingBar, questions, users }) => {
+  const { authedUser } = auth;
   const totalQuestions = Object.keys(questions.questions).sort(
     (a, b) =>
       questions.questions[b].timestamp - questions.questions[a].timestamp

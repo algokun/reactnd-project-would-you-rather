@@ -1,13 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsers } from "../redux/users/actions/actions";
 import LeaderboardItem from "../components/LeaderboardItem";
 
 class Leaderboard extends Component {
-  componentDidMount() {
-    this.props.dispatch(getUsers());
-  }
-
   render() {
     return (
       <div>

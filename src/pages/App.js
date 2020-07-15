@@ -22,9 +22,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ auth }) => {
   return {
-    authedUser: users.authedUser,
+    authedUser: auth.authedUser,
   };
 };
 

@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getUsers, loginUser } from "../redux/users/actions/actions";
+import { loginUser } from "../redux/auth/actions";
 
 class SelectUser extends Component {
-  componentDidMount() {
-    this.props.dispatch(getUsers());
-  }
-
   state = {
     active: "richard",
   };

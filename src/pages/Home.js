@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Route, BrowserRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { signOut } from "../redux/users/actions/actions";
+import { signOutUser } from "../redux/auth/actions";
 import Leaderboard from "./Leaderboard";
 import Questions from "./Questions";
 
 class Home extends Component {
   signOut = () => {
-    this.props.dispatch(signOut());
+    this.props.dispatch(signOutUser());
   };
 
   render() {

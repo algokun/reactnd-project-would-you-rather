@@ -1,7 +1,10 @@
-import { GET_USERS, LOG_IN, SIGN_OUT } from "./actions/action_constants";
+import {
+  ADD_QUESTION_TO_USER,
+  GET_USERS,
+  ADD_VOTE_TO_USER,
+} from "./actions/action_constants";
 
 const initialState = {
-  authedUser: null,
   users: {},
 };
 
@@ -11,16 +14,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.users,
-      };
-    case LOG_IN:
-      return {
-        ...state,
-        authedUser: action.authedUser,
-      };
-    case SIGN_OUT:
-      return {
-        ...state,
-        authedUser: null,
       };
     default:
       return state;
