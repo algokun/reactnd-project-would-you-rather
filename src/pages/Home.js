@@ -3,6 +3,7 @@ import { Route, BrowserRouter, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../redux/users/actions/actions";
 import Leaderboard from "./Leaderboard";
+import Questions from "./Questions";
 
 class Home extends Component {
   signOut = () => {
@@ -47,9 +48,7 @@ class Home extends Component {
             </button>
           </div>
           <div className="main-home-container">
-            <Route exact path="/">
-              <h1> Home</h1>
-            </Route>
+            <Route exact path="/" component={Questions} />
             <Route exact path="/leaderboard" component={Leaderboard} />
             <Route exact path="/new">
               <h1>new</h1>

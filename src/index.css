@@ -10,6 +10,7 @@
   --secondary: #ffa8ba;
   --tertiary: #fa5246;
   --surface: #fffffe;
+  --surface-variant: #e5e5e5;
 }
 
 body html {
@@ -79,7 +80,7 @@ body {
   background-color: var(--primary);
   color: var(--text-primary);
   border: none;
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
   border-radius: 5px;
   font-family: var(--font);
@@ -158,4 +159,60 @@ body {
   color: var(--secondary);
   padding: 1rem;
   border-radius: 0.3rem;
+}
+
+.tab-link {
+  display: flex;
+  position: relative;
+}
+
+.tab-link-item {
+  cursor: pointer;
+  margin-right: 2rem;
+}
+
+.tab-link-item-active {
+  margin-right: 1rem;
+  color: var(--primary);
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--primary);
+}
+
+.questions {
+  margin-top: 1rem;
+}
+
+.question-item {
+  background-color: var(--surface);
+  margin-bottom: 1rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  width: 50%;
+}
+
+.question-item-author {
+  padding: 1rem;
+  background-color: var(--surface-variant);
+  color: var(--text-primary);
+  text-transform: capitalize;
+  border-radius: 0.3rem 0.3rem 0rem 0rem;
+}
+
+.question-item-content {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.vertical-hr {
+  width: 0.1rem;
+  height: 10rem;
+  background-color: var(--surface-variant);
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.poll-btn{
+ text-decoration: none; 
+ color: var(--secondary);
 }

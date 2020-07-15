@@ -3,8 +3,12 @@ import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
 import SelectUser from "./SelectUser";
 import Home from "./Home";
+import { getInitialData } from "../redux/init-state";
 
 class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(getInitialData());
+  }
   render() {
     return (
       <Fragment>

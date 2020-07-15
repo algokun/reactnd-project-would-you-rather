@@ -22,38 +22,43 @@ class SelectUser extends Component {
   };
 
   render() {
+    if (this.props.loading)
+      return (
+        <div>
+          <p>Loading</p>
+        </div>
+      );
+
     return (
       <div className="container">
         <span className="heading">Welcome to Would You Rather?</span>
         <p>Please select user to continue</p>
         <div className="select-user-grid">
-          {this.props.loading === true
-            ? null
-            : Object.keys(this.props.users).map((keyName, i) => (
-                <div
-                  className="select-user-item"
-                  onClick={() => this.selectUser(this.props.users[keyName])}
-                  key={keyName}
-                >
-                  <img
-                    alt="user-avatar"
-                    src={this.props.users[keyName].avatar}
-                    className={
-                      this.props.users[keyName].name === this.state.active
-                        ? "select-user-avatar active-user-avatar"
-                        : "select-user-avatar"
-                    }
-                  />
-                  <p className="select-user-avatar-name">
-                    {this.props.users[keyName].name}
-                  </p>
-                </div>
-              ))}
+          {Object.keys(this.props.users).map((keyName, i) => (
+            <div
+              className="select-user-item"
+              onClick={() => this.selectUser(this.props.users[keyName])}
+              key={keyName}
+            >
+              <img
+                alt="user-avatar"
+                src={this.props.users[keyName].avatar}
+                className={
+                  this.props.users[keyName].name === this.state.active
+                    ? "select-user-avatar active-user-avatar"
+                    : "select-user-avatar"
+                }
+              />
+              <p className="select-user-avatar-name">
+                {this.props.users[keyName].name}
+              </p>
+            </div>
+          ))}
         </div>
         {/* <p>All these images are from <a href="">dribbble</a></p> */}
         <button
           style={{
-            width: '20rem',
+            width: "20rem",
           }}
           className="primary-cta"
           onClick={this.signInUser}
@@ -63,9 +68,10 @@ class SelectUser extends Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ loadingBar, users }) => {
   return {
     users: users.users,
+    loading: loadingBar.default,
   };
 };
 
