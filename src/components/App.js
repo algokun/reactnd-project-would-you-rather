@@ -5,8 +5,6 @@ import SelectUser from "./SelectUser";
 import Home from "./Home";
 
 class App extends Component {
-  componentDidMount() {}
-
   render() {
     return (
       <Fragment>

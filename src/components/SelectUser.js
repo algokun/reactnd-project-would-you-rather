@@ -52,6 +52,9 @@ class SelectUser extends Component {
         </div>
         {/* <p>All these images are from <a href="">dribbble</a></p> */}
         <button
+          style={{
+            width: '20rem',
+          }}
           className="primary-cta"
           onClick={this.signInUser}
         >{`Continue as ${this.state.active}`}</button>

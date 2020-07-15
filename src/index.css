@@ -69,9 +69,57 @@ body {
   background-color: var(--primary);
   border: none;
   padding: 1rem;
-  width: 20rem;
+  width: 100%;
   border-radius: 5px;
   font-family: var(--font);
   text-transform: capitalize;
   font-size: 1rem;
+}
+
+.secondary-cta {
+  background-color: var(--secondary);
+  border: none;
+  padding: 1rem;
+  width: 10rem;
+  border-radius: 5px;
+  font-family: var(--font);
+  text-transform: capitalize;
+  font-size: 1rem;
+}
+
+.main-home-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: var(--secondaryLight);
+  height: 100vh;
+  padding: 1rem;
+}
+
+.nav-links {
+  margin-top: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  color: var(--text-primary);
+  padding: .5rem;
+  width: 100%;
+  text-decoration: none;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.nav-link-active {
+  color: var(--secondary);
+}
+
+.main-home-container {
+  padding: 2rem;
 }
