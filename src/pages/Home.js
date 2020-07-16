@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter, NavLink } from "react-router-dom";
+import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOutUser } from "../redux/auth/actions";
 import Leaderboard from "./Leaderboard";
 import Questions from "./Questions";
 import NewQuestion from "./NewQuestion";
 import QuestionPage from "./QuestionPage";
+import NoMatch from "./NoMatch";
+import Nav from "../components/Nav";
 
 class Home extends Component {
   signOut = () => {
@@ -16,44 +18,16 @@ class Home extends Component {
     return (
       <BrowserRouter>
         <div className="main-home-grid">
-          <div className="nav">
-            <span className="heading">
-              Welcome,
-              <br /> {this.props.authedUser}
-            </span>
-            <div className="nav-links">
-              <NavLink
-                activeClassName="nav-link-active"
-                exact
-                to="/"
-                className="nav-link"
-              >
-                Home
-              </NavLink>
-              <NavLink
-                activeClassName="nav-link-active"
-                to="/leaderboard"
-                className="nav-link"
-              >
-                Leaderboard
-              </NavLink>
-              <NavLink
-                activeClassName="nav-link-active"
-                to="/add"
-                className="nav-link"
-              >
-                New Question
-              </NavLink>
-            </div>
-            <button onClick={this.signOut} className="secondary-cta">
-              Signout
-            </button>
-          </div>
+          <Nav authedUser={this.props.authedUser} signOut={this.signOut} />
           <div className="main-home-container">
-            <Route exact path="/" component={Questions} />
-            <Route exact path="/leaderboard" component={Leaderboard} />
-            <Route exact path="/add" component={NewQuestion} />
-            <Route path="/questions/:question_id" component={QuestionPage} />
+            <Switch>
+              <Route exact path="/" component={Questions} />
+              <Route exact path="/leaderboard" component={Leaderboard} />
+              <Route exact path="/add" component={NewQuestion} />
+              <Route path="/questions/:question_id" component={QuestionPage} />
+              <Route exact path="/404" component={NoMatch} />
+              <Redirect to="/404" />
+            </Switch>
           </div>
         </div>
       </BrowserRouter>

@@ -244,3 +244,19 @@ form {
   margin-top: 1rem;
   border-radius: 0.3rem;
 }
+.progress-item-active {
+  padding: 1rem;
+  background-color: var(--secondary);
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-radius: 0.3rem;
+  text-align: center;
+}
+
+.voted-item{
+  padding: .5rem;
+  font-size: .8rem;
+  background-color: var(--surface);
+  border-radius: 1rem;
+  margin-bottom: .5rem;
+}

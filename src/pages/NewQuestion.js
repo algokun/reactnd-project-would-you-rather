@@ -12,9 +12,13 @@ class NewQuestion extends Component {
     e.preventDefault();
     const { auth } = this.props;
 
-    this.props.dispatch(
-      handleSaveQuestion(this.state.optionOne, this.state.optionTwo, auth)
-    );
+    this.props
+      .dispatch(
+        handleSaveQuestion(this.state.optionOne, this.state.optionTwo, auth)
+      )
+      .then(() => {
+        this.props.history.push("/");
+      });
   };
 
   onOptionOneChange = (e) => {

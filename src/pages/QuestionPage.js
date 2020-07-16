@@ -13,7 +13,12 @@ class QuestionPage extends Component {
   };
 
   render() {
-    const { question, author, isAnswered } = this.props;
+    const { isNotExists, history } = this.props;
+    if (isNotExists) {
+      history.push("/404");
+      return null;
+    }
+    const { question, author, isAnswered, vote } = this.props;
     const { name, avatar } = author;
     const { optionOne, optionTwo } = question;
 
@@ -35,11 +40,13 @@ class QuestionPage extends Component {
                     isA={true}
                     voteA={optionOne.votes.length}
                     voteB={optionTwo.votes.length}
+                    vote={vote === "optionOne"}
                   />
                   <ProgressIndicator
                     text={optionTwo.text}
                     voteA={optionOne.votes.length}
                     voteB={optionTwo.votes.length}
+                    vote={vote === "optionTwo"}
                     isA={false}
                   />
                 </div>
@@ -67,18 +74,29 @@ class QuestionPage extends Component {
   }
 }
 
-const mapStateToProps = ({ auth, users, questions }, { match }) => {
+const mapStateToProps = ({ auth, users, questions }, { match, history }) => {
   const { question_id } = match.params;
+  const question = questions[question_id];
+
+  if (!question) {
+    return {
+      isNotExists: true,
+    };
+  }
+
   const authedUser = users[auth];
-  const authorId = questions[question_id].author;
-  const author = users[authorId];
   const isAnswered = Object.keys(authedUser.answers).includes(question_id);
 
+  const authorId = questions[question_id].author;
+  const author = users[authorId];
+
   return {
-    question: questions[question_id],
+    question,
     author,
     authedUser: auth,
     isAnswered,
+    isNotExists: false,
+    vote: isAnswered ? authedUser.answers[question_id] : "",
   };
 };
 

@@ -4,13 +4,13 @@ import QuestionItem from "../components/QuestionItem";
 
 class Questions extends Component {
   state = {
-    active: "Answered",
+    active: "Unanswered",
     items: [
       {
-        name: "Answered",
+        name: "Unanswered",
       },
       {
-        name: "Unanswered",
+        name: "Answered",
       },
     ],
   };

@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
           ...state[author],
           answers: {
             ...state[author].answers,
-            [qid]: [option],
+            [qid]: option,
           },
         },
       };
