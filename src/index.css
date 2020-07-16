@@ -96,6 +96,8 @@ body {
   width: 10rem;
   border-radius: 5px;
   font-family: var(--font);
+  text-decoration: none;
+  text-align: center;
   text-transform: capitalize;
   font-size: 1rem;
   margin-top: 1rem;

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, BrowserRouter, Switch, Redirect } from "react-router-dom";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOutUser } from "../redux/auth/actions";
 import Leaderboard from "./Leaderboard";
@@ -22,11 +22,11 @@ class Home extends Component {
           <div className="main-home-container">
             <Switch>
               <Route exact path="/" component={Questions} />
-              <Route exact path="/leaderboard" component={Leaderboard} />
-              <Route exact path="/add" component={NewQuestion} />
+              <Route path="/leaderboard" component={Leaderboard} />
+              <Route path="/add" component={NewQuestion} />
               <Route path="/questions/:question_id" component={QuestionPage} />
-              <Route exact path="/404" component={NoMatch} />
-              <Redirect to="/404" />
+              <Route path="/questions/something" component={NoMatch} />
+              <Route component={NoMatch} />
             </Switch>
           </div>
         </div>

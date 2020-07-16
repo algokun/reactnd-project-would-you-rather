@@ -1,35 +1,53 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import LoadingBar from "react-redux-loading";
 import SelectUser from "./SelectUser";
-import Home from "./Home";
 import { getInitialData } from "../redux/init-state";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { signOutUser } from "../redux/auth/actions";
+import Leaderboard from "./Leaderboard";
+import Questions from "./Questions";
+import NewQuestion from "./NewQuestion";
+import QuestionPage from "./QuestionPage";
 import NoMatch from "./NoMatch";
+import Nav from "../components/Nav";
+import { Route, BrowserRouter, Switch } from "react-router-dom";
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(getInitialData());
   }
+
+  signOut = () => {
+    this.props.dispatch(signOutUser());
+  };
+
   render() {
     return (
-      <Fragment>
-        <LoadingBar />
+      <BrowserRouter>
         <div>
-          {/* If there is user - redirect to home else be here */}
+          <LoadingBar />
           {this.props.auth === null ? (
-            <BrowserRouter>
-              <Switch>
-                <Route exact path="/" component={SelectUser} />
-                <Route exact path="/404" component={NoMatch} />
-                <Redirect to="/404" />
-              </Switch>
-            </BrowserRouter>
+            <Route render={() => <SelectUser />} />
           ) : (
-            <Home />
+            <div className="main-home-grid">
+              <Nav authedUser={this.props.auth} signOut={this.signOut} />
+              <div className="main-home-container">
+                <Switch>
+                  <Route exact path="/" component={Questions} />
+                  <Route path="/leaderboard" component={Leaderboard} />
+                  <Route path="/add" component={NewQuestion} />
+                  <Route
+                    path="/questions/:question_id"
+                    component={QuestionPage}
+                  />
+                  <Route path="/questions/something" component={NoMatch} />
+                  <Route component={NoMatch} />
+                </Switch>
+              </div>
+            </div>
           )}
         </div>
-      </Fragment>
+      </BrowserRouter>
     );
   }
 }

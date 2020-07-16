@@ -15,7 +15,7 @@ class QuestionPage extends Component {
   render() {
     const { isNotExists, history } = this.props;
     if (isNotExists) {
-      history.push("/404");
+      history.push("/");
       return null;
     }
     const { question, author, isAnswered, vote } = this.props;
